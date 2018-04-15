@@ -48,24 +48,34 @@ public void menu() {
 		case 4: System.out.println("Enter bug ID: ");
 				int id=sc.nextInt();
 				sc.nextLine();
+				int re=0;
 				for(int i=0;i<DataStore.RB.size();i++) {
 					if(DataStore.RB.get(i).bID==id) {
 						DataStore.RB.get(i).updateBugStatus();
+						re=1;
 						break;
 					}
 			}
+				if(re==0) {
+					System.out.println("Wrong Bug ID");
+				}
 				break;
 		case 5: System.out.println("Enter service ID: ");
 				int id1=sc.nextInt();
 				sc.nextLine();
+				int fe=0;
 				for(int i=0;i<DataStore.ser.size();i++) {
 					if(DataStore.ser.get(i).serviceID==id1) {
 						DataStore.ser.get(i).view();
 						System.out.println("Solved or Unsolved");
 						String y=sc.nextLine();
 						DataStore.ser.get(i).update(y);
+						fe=1;
 						break;
 					}
+				}
+				if(fe==0) {
+					System.out.println("Wrong service ID");
 				}
 				break;
 		case 6: for(int i=0;i<DataStore.feed.size();i++) {
@@ -78,14 +88,19 @@ public void menu() {
 		case 7: System.out.println("Enter Technician ID: ");
 				int idl=sc.nextInt();
 				sc.nextLine();
+				int fla=0;
 				for(int i=0;i<DataStore.tech.size();i++) {
 					if(DataStore.tech.get(i).techID==idl) {
 						
 						DataStore.tech.get(i).availabilityStatus=true;
 						System.out.println("Techician "+idl+" available now");
+						fla=1;
 						break;
 					}
 			}
+				if(fla==0) {
+					System.out.println("Wrong technician ID");
+				}
 				break;
 		case 8: flag=1;
 				break;

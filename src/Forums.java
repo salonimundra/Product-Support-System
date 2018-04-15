@@ -44,12 +44,17 @@ public void postQuery(String product_category, String query) {
 }
 
 public void answerQuery(int forumPostID, String answer) {
+	int fla=0;
 	for(int i=0; i<DataStore.forums.size(); i++) {
 		if(DataStore.forums.get(i).forumPostID==forumPostID) {
+			fla=1;
 			String key = DataStore.forums.get(i).query;
 			//System.out.println(key);
 			DataStore.forums.get(i).forumPost.get(key).add(answer);
 		}
+	}
+	if(fla==0) {
+		System.out.println("Wrong Forum post ID");
 	}
 }
 public void update() {
@@ -77,15 +82,19 @@ public void update() {
 		sc.nextLine();
 		System.out.println("Enter answer to be deleted: ");
 		String answer = sc.nextLine();
-		
+		int fe=0;
 		for(int i=0; i<DataStore.forums.size(); i++) {
 			if(DataStore.forums.get(i).forumPostID==id) {
+				fe=1;
 				for(int j=0; j<DataStore.forums.get(i).forumPost.get(DataStore.forums.get(i).query).size(); j++) {
 					if(DataStore.forums.get(i).forumPost.get(DataStore.forums.get(i).query).get(j).equals(answer)) {
 						DataStore.forums.get(i).forumPost.get(DataStore.forums.get(i).query).remove(j);
 					}
 				}
 			}
+		}
+		if(fe==0) {
+			System.out.println("Wrong forum post ID");
 		}
 	}
 	else if(option==3) {

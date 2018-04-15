@@ -119,6 +119,7 @@ public void menu() {
 	case 8: ReportBug rb=new ReportBug();
 			rb.reportBug();
 			DataStore.RB.add(rb);
+			break;
 	case 9: System.out.println("Specify Product Category");
 			String product=sc.nextLine();
 			Technician tech=new Technician(0,"0","0","0",true);
